@@ -6,4 +6,4 @@ Praktikum program laravel
 
  1. M. Badar Haula Abdi_22091397085
  2. Nur Puspita Amalia_22091397093
- 3. Ahmad Balya B_22091397095
+ 3. Ahmad Balya D_22091397095
