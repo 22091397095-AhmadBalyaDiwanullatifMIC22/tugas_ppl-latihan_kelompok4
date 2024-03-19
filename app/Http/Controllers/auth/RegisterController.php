@@ -30,14 +30,14 @@ class RegisterController extends Controller
         // Validasi data masukan
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            //'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         // Membuat dan menyimpan pengguna baru
         User::create([
             'name' => $request->name,
-            'email' => $request->email,
+            //'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 

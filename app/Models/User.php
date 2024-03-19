@@ -7,6 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    public function contacts(){
+        return $this->hasMany(Contact::class);
+    }
+
     protected $fillable = [
         'username', 'password', 'name',
     ];
