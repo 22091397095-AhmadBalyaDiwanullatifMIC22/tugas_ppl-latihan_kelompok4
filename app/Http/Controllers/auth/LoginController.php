@@ -26,7 +26,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
             // Jika autentikasi berhasil, redirect ke halaman yang sesuai
@@ -34,7 +34,7 @@ class LoginController extends Controller
         }
 
         // Jika autentikasi gagal, kembali ke halaman login dengan pesan error
-        return redirect()->back()->withErrors(['email' => 'Email atau password salah.'])->withInput($request->only('email'));
+        return redirect()->back()->withErrors(['username' => 'Username atau password salah.'])->withInput($request->only('username'));
     }
 
     /**

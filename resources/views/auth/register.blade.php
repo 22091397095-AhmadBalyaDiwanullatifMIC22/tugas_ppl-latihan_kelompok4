@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi</title>
+    <title>Registrasi Pengguna Baru</title>
 </head>
 <body>
     <h2>Registrasi Pengguna Baru</h2>
@@ -24,6 +24,11 @@
         <div>
             <label for="name">Nama:</label>
             <input type="text" name="name" id="name" value="{{ old('name') }}" required autofocus>
+        </div>
+
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="{{ old('username') }}" required>
         </div>
 
         <div>

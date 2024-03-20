@@ -22,8 +22,8 @@
         @csrf
 
         <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="{{ old('username') }}" required autofocus>
         </div>
 
         <div>

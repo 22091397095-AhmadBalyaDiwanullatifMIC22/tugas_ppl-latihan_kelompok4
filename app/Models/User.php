@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Model
 {
-    public function contacts(){
+    public function Contact(){
         return $this->hasMany(Contact::class);
     }
 
