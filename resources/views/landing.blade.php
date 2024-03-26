@@ -1,10 +1,14 @@
-@extends('master')
-
-@section('title', 'Welcome')
-
-@section('content')
-    <h1>Welcome to My Application</h1>
-    <p>This is a simple application for managing users, contacts, and addresses.</p>
-    <a href="{{ route('register') }}">Register</a>
-    <a href="{{ route('login') }}">Login</a>
-@endsection
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>

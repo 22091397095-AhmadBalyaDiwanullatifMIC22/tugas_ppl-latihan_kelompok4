@@ -41,6 +41,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route untuk halaman landing
-Route::get('/landing', function () {
+Route::get('/', function () {
     return view('landing');
 });
