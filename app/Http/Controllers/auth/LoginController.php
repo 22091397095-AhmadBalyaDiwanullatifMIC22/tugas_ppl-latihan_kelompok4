@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Jika autentikasi berhasil, redirect ke halaman yang sesuai
-            return redirect()->intended('/');
+            return redirect()->intended('/landing');
         }
 
         // Jika autentikasi gagal, kembali ke halaman login dengan pesan error
