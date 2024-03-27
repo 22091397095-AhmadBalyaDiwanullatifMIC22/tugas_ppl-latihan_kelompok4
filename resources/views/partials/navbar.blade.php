@@ -8,10 +8,10 @@
             <div class="collapse navbar-collapse" id="navbarsExample02">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"></li>
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="#">User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                     @auth
                     <li class="nav-item dropdown">
@@ -20,7 +20,7 @@
                         </a>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-grid-1x2"></i> My Dashboard</a></li>
-                          <li><a class="dropdown-item" href="#">contact</a></li>
+                          <li><a class="dropdown-item" href="#">Contact</a></li>
                           <li><a class="dropdown-item" href="#">Address</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li>

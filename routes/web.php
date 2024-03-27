@@ -44,5 +44,5 @@ Route::middleware('auth')->group(function () {
 
 // Route untuk halaman landing
 Route::get('/home', function () {
-    return view('auth.register');
+    return view('auth.login');
 });
