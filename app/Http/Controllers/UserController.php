@@ -9,7 +9,17 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    public function register(Request $request)
+    public function indexUser()
+    {
+        $collect = User::get();
+        return view('user.indexUser', compact('collect'));
+    }
+
+    public function create(){
+        return view('user.createUser');
+    }
+
+    public function store(Request $request)
     {
         // Validasi data yang masuk
         $request->validate([
@@ -19,25 +29,18 @@ class UserController extends Controller
         ]);
 
         // Simpan data user baru
-        $user = new User();
-        $user->username = $request->username;
-        $user->password = bcrypt($request->password);
-        $user->name = $request->name;
-        $user->save();
+        User::create([
+            'username' => $request->username,
+            'password' => $request->password,
+            'name' => $request->name,
+        ]);
 
         return response()->setJSON(['message' => 'User registered successfully']);
     }
 
-    public function login(Request $request)
-    {
-        // Validasi data yang masuk
-        $credentials = $request->only('username', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return response()->setJSON(['message' => 'Login successful']);
-        } else {
-            return response()->setJSON(['message' => 'Invalid credentials'], 401);
-        }
+    public function edit(int $id){
+        $edit = User::findOrFail($id);
+        return view('user.updateUser', compact('editor'));
     }
 
     public function update(Request $request)
@@ -75,5 +78,13 @@ class UserController extends Controller
         // Logout user
         Auth::logout();
 
+    }
+
+    public function destroy(int $id)
+    {
+        $destroyer = user::findOrFail($id);
+        $destroyer->delete();
+
+        return redirect()->back()->with('status','User deleted');
     }
 }

@@ -19,8 +19,11 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Rute untuk User
 Route::middleware('auth')->group(function () {
-    Route::post('/update-user', [UserController::class, 'update']);
-    Route::get('/get-user', [UserController::class, 'getUser']);
+    Route::get('/user', [UserController::class, 'indexUser']);
+    Route::get('/user/create', [UserController::class, 'create']);
+    Route::post('/user/update-user', [UserController::class, 'update']);
+    Route::get('/user/get-user', [UserController::class, 'getUser']);
+    Route::get('/user/{id}/delete', [UserController::class, 'destroy']);
     Route::post('/logout', [UserController::class, 'logout']);
 });
 
