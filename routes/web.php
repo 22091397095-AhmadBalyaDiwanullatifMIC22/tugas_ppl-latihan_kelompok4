@@ -1,51 +1,33 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\AddressController;
-use App\Http\Controllers\auth\RegisterController;
-use App\Http\Controllers\auth\LoginController;
-use App\Http\Controllers\LandingController;
+use App\Http\Controllers\LoginController;
+use GuzzleHttp\Middleware;
+use Illuminate\Auth\Middleware\RedirectIfAuthenticated;
+use Illuminate\Auth\Middleware\Authenticate;
 
-// Rute untuk registrasi dan login
-Route::get('/register', [LoginController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
-Route::get('/landing', [LandingController::class, 'index'])->name('landing');
-
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-// Rute untuk User
-Route::middleware('auth')->group(function () {
-    Route::get('/user', [UserController::class, 'indexUser']);
-    Route::get('/user/create', [UserController::class, 'create']);
-    Route::post('/user/update-user', [UserController::class, 'update']);
-    Route::get('/user/get-user', [UserController::class, 'getUser']);
-    Route::get('/user/{id}/delete', [UserController::class, 'destroy']);
-    Route::post('/logout', [UserController::class, 'logout']);
-});
-
-// Rute untuk Contact
-Route::middleware('auth')->group(function () {
-    Route::post('/create-contact', [ContactController::class, 'create']);
-    Route::post('/update-contact', [ContactController::class, 'update']);
-    Route::get('/get-contact/{id}', [ContactController::class, 'get']);
-    Route::get('/search-contact', [ContactController::class, 'search']);
-    Route::post('/remove-contact', [ContactController::class, 'remove']);
-});
-
-// Rute untuk Address
-Route::middleware('auth')->group(function () {
-    Route::post('/create-address', [AddressController::class, 'create']);
-    Route::post('/update-address', [AddressController::class, 'update']);
-    Route::get('/get-address/{id}', [AddressController::class, 'get']);
-    Route::get('/list-address', [AddressController::class, 'list']);
-    Route::post('/remove-address', [AddressController::class, 'remove']);
-});
-
-// Route untuk halaman landing
 Route::get('/home', function () {
-    return view('auth.login');
+    return view('home', [
+        "title" => "Laravel 11 | Home"
+    ]);
 });
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']); //nama bebas bagian autenticate
+Route::post('/logout', [LoginController::class, 'logout']); //nama bebas bagian autenticate
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+// Route buat user
+Route::get('/user', [AdminController::class,'index'])->name('user')->middleware('auth');
+Route::get('/user/create', [AdminController::class, 'create'])->middleware('auth');
+Route::post('/user/create', [AdminController::class, 'store'])->middleware('auth');
+Route::get('/user/{id}/edit', [AdminController::class, 'edit'])->middleware('auth');
+Route::put('/user/{id}/edit', [AdminController::class, 'update'])->middleware('auth');
+Route::get('/user/{id}/delete', [AdminController::class, 'destroy'])->middleware('auth');

@@ -1,3 +1,9 @@
+@extends('layouts.master')
+@section('container')
+
+@endsection
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
