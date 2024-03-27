@@ -75,6 +75,5 @@ class UserController extends Controller
         // Logout user
         Auth::logout();
 
-        return response()->setJSON(['message' => 'Logged out successfully']);
     }
 }

@@ -45,5 +45,8 @@
             <button type="submit">Daftar</button>
         </div>
     </form>
+    <div>
+        Sudah punya akun? <a href="{{ route('login') }}"> Login! </a>
+    </div>
 </body>
 </html>

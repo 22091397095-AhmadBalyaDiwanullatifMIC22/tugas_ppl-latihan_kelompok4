@@ -18,6 +18,10 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function showRegistrationForm(){
+        return view('auth.register');
+    }
+
     /**
      * Memproses autentikasi pengguna.
      *
@@ -30,7 +34,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Jika autentikasi berhasil, redirect ke halaman yang sesuai
-            return redirect()->intended('/landing');
+            return redirect()->intended(route('landing'));
         }
 
         // Jika autentikasi gagal, kembali ke halaman login dengan pesan error
@@ -47,6 +51,10 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('login')->with('success', 'Anda telah berhasil keluar.');
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/home')->with('success', 'Anda telah berhasil keluar.');
     }
 }

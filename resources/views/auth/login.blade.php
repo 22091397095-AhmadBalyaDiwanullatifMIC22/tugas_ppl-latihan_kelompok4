@@ -35,5 +35,10 @@
             <button type="submit">Login</button>
         </div>
     </form>
+
+    <div>
+        Belum punya akun? <a href="{{ route('register') }}"> Daftar Sekarang! </a>
+    </div>
+
 </body>
 </html>

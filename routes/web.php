@@ -4,16 +4,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AddressController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\LandingController;
 
 // Rute untuk registrasi dan login
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::get('/register', [LoginController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/landing', [LandingController::class, 'index'])->name('landing');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Rute untuk User
 Route::middleware('auth')->group(function () {
@@ -41,6 +43,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route untuk halaman landing
-Route::get('/', function () {
-    return view('landing');
+Route::get('/home', function () {
+    return view('auth.register');
 });

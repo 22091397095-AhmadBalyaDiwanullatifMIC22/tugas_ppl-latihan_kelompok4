@@ -19,6 +19,10 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
+    public function showLoginForm(){
+        return view('auth.login');
+    }
+
     /**
      * Menyimpan pengguna yang baru terdaftar.
      *
