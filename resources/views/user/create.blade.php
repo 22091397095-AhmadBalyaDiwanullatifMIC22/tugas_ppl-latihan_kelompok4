@@ -30,7 +30,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="">Name: </label>
-                            <input type="text" id="Naem" name="Name" placeholder="Name" value="{{ old('Name') }}"/>
+                            <input type="text" id="Name" name="Name" placeholder="Name" value="{{ old('Name') }}"/>
                             @error('Name') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-3">
